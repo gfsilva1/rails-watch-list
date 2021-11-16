@@ -1,1 +1,8 @@
 <h2><%= @list.name %></h2>
+
+<% @list.movies.each do |movie|%>
+  <strong><%= movie.title %> <span class="text-muted font-weight-normal">• <%= movie.rating %> <i class="fas fa-star star-yellow"></i></span></strong>
+  <% bookmark = Bookmark.find_by(list: @list, movie:movie) %>
+  <small class="text-muted"><%= movie.overview %></small>
+  <%= bookmark.comment %>
+<% end %>
